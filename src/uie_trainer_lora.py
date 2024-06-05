@@ -480,7 +480,7 @@ class UIETrainer(Seq2SeqTrainer):
 
         elif args.method == "forward_moe" and args.is_first_task == False:
             from peft.tuners.lora import Linear
-            def hook_fn(module, input, output, name, quantile=0.2):
+            def hook_fn(module, input, output, name, quantile=args.ini_threshold):
                 # 计算每个token的分位数
                 quantiles = torch.quantile(output.abs(), quantile, dim=-1, keepdim=True)
                 # 创建mask，如果绝对值小于对应token的分位数则为True，否则为False
