@@ -4,7 +4,7 @@ clusters=(1024)
 ini_thresholds=(0.2 0.3 0.4 0.5 0.6)
 cluster_constructure_methods=("sequential")
 activation_combined=True
-method="cluster_activate"
+method="forward_moe"
 model="t5_large"
 for cluster in "${clusters[@]}"; do
     for cluster_constructure_method in "${cluster_constructure_methods[@]}"; do
